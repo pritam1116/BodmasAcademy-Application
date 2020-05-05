@@ -1,4 +1,4 @@
-package com.bodmas.controller.test;
+package com.bodmas.test.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,7 +25,7 @@ public class TestServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	// Define datasource/connection pool for Resource Injection
-	@Resource(name="jdbc/bodmas_application")
+	@Resource(name="jdbc/bodmas")
 	private DataSource dataSource;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

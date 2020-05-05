@@ -1,7 +1,7 @@
 <!DOCTYPE xml> 
 <Context>
 	
-	<Resource name="jdbc/bodmas_application"
+	<Resource name="jdbc/bodmas"
 			  auth="Container" type="javax.sql.DataSource"
 			  maxActive="20" maxIdle="5" maxWait="10000"
 			  username="SYSTEM" password="Rahul007" 

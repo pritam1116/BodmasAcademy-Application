@@ -13,7 +13,8 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <script src="js/registration.js"></script> 
+	<link rel="stylesheet" href="css/register.css">
     <!-- Site Icons -->
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
@@ -60,12 +61,12 @@
 						<form role="form" class="form-horizontal">
 							<div class="form-group">
 								<div class="col-sm-12">
-									<input class="form-control" id="email1" placeholder="Email" type="email">
+									<input class="form-control" id="email1" placeholder="Email" type="email" name="email" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-sm-12">
-									<input class="form-control" id="exampleInputPassword1" placeholder="Password" type="password">
+									<input class="form-control" id="exampleInputPassword1" placeholder="Password" type="password" name="password" required>
 								</div>
 							</div>
 							<div class="row">
@@ -79,41 +80,45 @@
 						</form>
 					</div>
 					<div class="tab-pane" id="Registration">
-						<form role="form" class="form-horizontal">
+						<form role="form" class="form-horizontal" action="registration_confirmation.jsp" method="post">
+						
 							<div class="form-group">
 								<div class="col-sm-12">
-									<input class="form-control" placeholder="Name" type="text">
+									<input class="form-control" id="name" placeholder="Name" type="text" name="name" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-sm-12">
-									<input class="form-control" id="email" placeholder="Email" type="email">
+									<input class="form-control" id="email" placeholder="Email" type="email" name="email" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-sm-12">
-									<input class="form-control" id="mobile" placeholder="Mobile" type="text">
+									<input class="form-control" id="mobile" placeholder="Mobile" type="text" name="mobile" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-sm-12">
-									<input class="form-control" id="password" placeholder="Password" type="password">
+									<input class="form-control" id="password" placeholder="Password" type="password" name="password" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-sm-12">
-									<input class="form-control" id="password" placeholder="Confirm Password" type="password">
+									<input class="form-control" id="confirm_password" placeholder="Confirm Password" type="password" name="confirm_password" required>
 								</div>
 							</div>
 							<div class="row">							
-								<div class="col-sm-10">
-									<button type="button" class="btn btn-light btn-radius btn-brd grd1">
+								<div class="col-sm-10" class="open-btn">
+									<button type="submit" class="btn btn-light btn-radius btn-brd grd1"  onclick="return openForm()">
 										Save &amp; Continue
 									</button>
-									<button type="button" class="btn btn-light btn-radius btn-brd grd1">
+									<button type="reset" class="btn btn-light btn-radius btn-brd grd1">
+										Reset</button>
+									<button type="button" class="btn btn-light btn-radius btn-brd grd1" onclick="window.history.back()">
 										Cancel</button>
 								</div>
 							</div>
+							
 						</form>
 					</div>
 				</div>
@@ -121,7 +126,7 @@
 		</div>
 	  </div>
 	</div>
-
+	
     <!-- LOADER -->
 	<div id="preloader">
 		<div class="loader-container">
@@ -147,24 +152,24 @@
 				<div class="collapse navbar-collapse" id="navbars-host">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Course </a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="course-grid-2.html">Course Grid 2 </a>
-								<a class="dropdown-item" href="course-grid-3.html">Course Grid 3 </a>
-								<a class="dropdown-item" href="course-grid-4.html">Course Grid 4 </a>
+								<a class="dropdown-item" href="#">Course Grid 2 </a>
+								<a class="dropdown-item" href="#">Course Grid 3 </a>
+								<a class="dropdown-item" href="#">Course Grid 4 </a>
 							</div>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Blog </a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="blog.html">Blog </a>
-								<a class="dropdown-item" href="blog-single.html">Blog single </a>
+								<a class="dropdown-item" href="#">Blog </a>
+								<a class="dropdown-item" href="#">Blog single </a>
 							</div>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="teachers.html">Teachers</a></li>
-					<!--	<li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>    -->
+						<li class="nav-item"><a class="nav-link" href="#">Admin</a></li>    
 						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
@@ -269,8 +274,8 @@
             <div class="row align-items-center">
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                     <div class="message-box">
-                        <h4>2018 BEST SmartEDU education school</h4>
-                        <h2>Welcome to SmartEDU education school</h2>
+                        <h4>2018 BEST Bodmas Academy</h4>
+                        <h2>Welcome to Bodmas Academy</h2>
                         <p>Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
 
                         <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis montes, nascetur ridiculus mus. Sed vitae rutrum neque. </p>
@@ -417,8 +422,8 @@
                     <div class="testi-carousel owl-carousel owl-theme">
                         <div class="testimonial clearfix">
 							<div class="testi-meta">
-                                <img src="images/testi_01.png" alt="" class="img-fluid">
-                                <h4>James Fernando </h4>
+                                <img src="images/rsz_munna_pic.png" alt="" class="img-fluid">
+                                <h4>Munna Boss </h4>
                             </div>
                             <div class="desc">
                                 <h3><i class="fa fa-quote-left"></i> Wonderful Support!</h3>
@@ -430,8 +435,8 @@
 
                         <div class="testimonial clearfix">
 							<div class="testi-meta">
-                                <img src="images/testi_02.png" alt="" class="img-fluid">
-                                <h4>Jacques Philips </h4>
+                                <img src="images/rsz_munna_pic.png" alt="" class="img-fluid">
+                                <h4>Munna Boss </h4>
                             </div>
                             <div class="desc">
                                 <h3><i class="fa fa-quote-left"></i> Awesome Services!</h3>
@@ -443,12 +448,12 @@
 
                         <div class="testimonial clearfix">
 							<div class="testi-meta">
-                                <img src="images/testi_03.png" alt="" class="img-fluid ">
-                                <h4>Venanda Mercy </h4>
+                                <img src="images/rsz_munna_pic.png" alt="" class="img-fluid ">
+                                <h4>Munna Boss </h4>
                             </div>
                             <div class="desc">
                                 <h3><i class="fa fa-quote-left"></i> Great & Talented Team!</h3>
-                                <p class="lead">The master-builder of human happines no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>
+                                <p class="lead">The master-builder of human happiness no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>
                             </div>
                             <!-- end testi-meta -->
                         </div>
@@ -468,8 +473,8 @@
 
                         <div class="testimonial clearfix">
 							<div class="testi-meta">
-                                <img src="images/testi_02.png" alt="" class="img-fluid">
-                                <h4>Jacques Philips </h4>
+                                <img src="images/rsz_munna_pic.png" alt="" class="img-fluid">
+                                <h4>Munna Boss </h4>
                             </div>
                             <div class="desc">
                                 <h3><i class="fa fa-quote-left"></i> Awesome Services!</h3>
@@ -481,12 +486,12 @@
 
                         <div class="testimonial clearfix">
 							<div class="testi-meta">
-                                <img src="images/testi_03.png" alt="" class="img-fluid">
-                                <h4>Venanda Mercy </h4>
+                                <img src="images/rsz_munna_pic.png" alt="" class="img-fluid">
+                                <h4>Munna Boss </h4>
                             </div>
                             <div class="desc">
                                 <h3><i class="fa fa-quote-left"></i> Great & Talented Team!</h3>
-                                <p class="lead">The master-builder of human happines no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>
+                                <p class="lead">The master-builder of human happiness no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>
                             </div>
                             <!-- end testi-meta -->
                         </div><!-- end testimonial -->
@@ -496,30 +501,7 @@
         </div><!-- end container -->
     </div><!-- end section -->
 
-    <div class="parallax section dbcolor">
-        <div class="container">
-            <div class="row logos">
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="images/logo_01.png" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="images/logo_02.png" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="images/logo_03.png" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="images/logo_04.png" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="images/logo_05.png" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="images/logo_06.png" alt="" class="img-repsonsive"></a>
-                </div>
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end section -->
+  
 
     <footer class="footer">
         <div class="container">
