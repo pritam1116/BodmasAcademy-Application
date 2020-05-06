@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 
 import javax.sql.DataSource;
 
+import com.bodmas.main.model.BodmasAdmin;
 import com.bodmas.main.model.BodmasStudent;
 
 /**
@@ -83,6 +84,46 @@ public class BodmasDbUtil {
 			
 			e.printStackTrace();
 		}
+		
+	}
+
+	public boolean loginAdmin(BodmasAdmin bodmasAdmin) throws Exception {
+		
+		try {
+			System.out.println("Login Admin method invoked");
+			conn           =        dataSource.getConnection();
+			String    sql  =        "select * from bodmas_admin_login "
+								+ " where email=? and password=? "
+								;
+			
+			ps             =        conn.prepareStatement(sql);
+			
+			
+			
+			ps.setString(1,bodmasAdmin.getEmail());
+			
+			ps.setString(2,bodmasAdmin.getPassword());
+			
+			rs = ps.executeQuery();
+			
+			
+			if(rs.next()) {
+				System.out.println("if invoked "+rs.getString("email"));
+				if(bodmasAdmin.getEmail().equals(rs.getString("email")) 
+						&& bodmasAdmin.getPassword().equals(rs.getString("password")))
+				return true; 
+			}
+			
+			return false;   
+			
+		}
+		finally {
+			
+			close(conn, ps, rs);
+				
+		}
+		
+		
 		
 	}
 

@@ -127,6 +127,68 @@
 	  </div>
 	</div>
 	
+	
+	<!--  Admin Login  -->
+	
+	
+		<div class="modal fade" id="admin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header tit-up">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Admin Login</h4>
+			</div>
+		<div class="modal-body customer-box">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs">
+					<li><a class="active" href="#Admin" data-toggle="tab">Login</a></li>
+					
+				</ul>
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div class="tab-pane active" id="Admin">
+						<form role="form" class="form-horizontal" action="BodmasControllerServlet" method="post">
+						<input type="hidden" name="command" value="LOGIN" /> 
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" id="email1" placeholder="Email" type="email" name="email" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" id="exampleInputPassword1" placeholder="Password" type="password" name="password" required>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-10">
+									<button type="submit" class="btn btn-light btn-radius btn-brd grd1">
+										Submit
+									</button>
+									<a class="for-pwd" href="javascript:;">Forgot your password?</a>
+								</div>
+							</div>
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+							
+						
+	</div>
+</div>
+			
+		
+	<!-- end admin panel -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
     <!-- LOADER -->
 	<div id="preloader">
 		<div class="loader-container">
@@ -169,7 +231,7 @@
 							</div>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="teachers.html">Teachers</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Admin</a></li>    
+						<li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#admin">Admin</a></li>    
 						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">

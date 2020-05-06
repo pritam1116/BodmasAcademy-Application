@@ -10,8 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import com.bodmas.main.dao.BodmasDbUtil;
+import com.bodmas.main.model.BodmasAdmin;
 import com.bodmas.main.model.BodmasStudent;
 
 /**
@@ -79,6 +81,14 @@ public class BodmasControllerServlet extends HttpServlet {
 				addStudent(request,response);
 				break;
 			
+			case "LOGIN":
+				loginAdmin(request,response);
+				break;
+				
+			case "LOGOUT":
+				logoutAdmin(request,response);
+				break;
+			
 			default:
 				fetchingData(request,response);
 				
@@ -96,7 +106,50 @@ public class BodmasControllerServlet extends HttpServlet {
 		
 		
 	}
+	
+	
+	/* Admin Logout */
+	private void logoutAdmin(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		HttpSession session = request.getSession();
+		session.removeAttribute("email");
+		session.invalidate();
+		response.sendRedirect("index.html");
+		
+		
+	}
 
+	/* Admin Login */
+	
+	private void loginAdmin(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String email               =          request.getParameter("email");
+		String password            =          request.getParameter("password");
+		
+		BodmasAdmin ba             =          new BodmasAdmin(email, password);  
+		System.out.println(ba);
+		
+		System.out.println(bodmasDbUtil.loginAdmin(ba));
+        if(bodmasDbUtil.loginAdmin(ba)) {
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("email", email);
+			
+			response.sendRedirect("admin_dashboard.jsp");
+			
+		}
+		
+		else {
+			
+			response.sendRedirect("index.html");
+		}
+		
+	}
+
+	
+	
+	
+	
 	private void addStudent(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("add method invoked");
 		String name                 =              request.getParameter("name");
