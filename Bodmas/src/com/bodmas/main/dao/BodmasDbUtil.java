@@ -127,4 +127,41 @@ public class BodmasDbUtil {
 		
 	}
 
+	public boolean loginStudent(BodmasStudent bodmasStudent) throws Exception {
+		
+		try {
+			System.out.println("Login Student method invoked");
+			conn           =        dataSource.getConnection();
+			String    sql  =        "select * from bodmas_registration "
+								+ " where email=? and password=? "
+								;
+			
+			ps             =        conn.prepareStatement(sql);
+			
+			
+			
+			ps.setString(1,bodmasStudent.getEmail());
+			
+			ps.setString(2,bodmasStudent.getPassword());
+			
+			rs = ps.executeQuery();
+			
+			
+			if(rs.next()) {
+				System.out.println("if invoked "+rs.getString("email"));
+				if(bodmasStudent.getEmail().equals(rs.getString("email")) 
+						&& bodmasStudent.getPassword().equals(rs.getString("password")))
+				return true; 
+			}
+			
+			return false;   
+			
+		}
+		finally {
+			
+			close(conn, ps, rs);
+				
+		}
+	}
+
 }

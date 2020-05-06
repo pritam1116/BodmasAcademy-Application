@@ -85,6 +85,10 @@ public class BodmasControllerServlet extends HttpServlet {
 				loginAdmin(request,response);
 				break;
 				
+			case "S_LOGIN":
+				loginStudent(request,response);
+				break;	
+				
 			case "LOGOUT":
 				logoutAdmin(request,response);
 				break;
@@ -108,6 +112,31 @@ public class BodmasControllerServlet extends HttpServlet {
 	}
 	
 	
+	private void loginStudent(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String email               =          request.getParameter("email");
+		String password            =          request.getParameter("password");
+		
+		BodmasStudent bs             =          new BodmasStudent(email, password);  
+		System.out.println(bs);
+		
+		System.out.println(bodmasDbUtil.loginStudent(bs)); 
+        if(bodmasDbUtil.loginStudent(bs)) {
+			System.out.println("if loginstudent");
+			HttpSession session = request.getSession();
+			session.setAttribute("email", email);
+			
+			response.sendRedirect("student_dashboard.jsp");
+			
+		}
+		
+		else {
+			
+			response.sendRedirect("index.html");
+		}
+		
+	}
+
 	/* Admin Logout */
 	private void logoutAdmin(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		

@@ -59,6 +59,10 @@ public class BodmasStudent {
 	}
 	
 	
+	public BodmasStudent(String email, String password) {
+		this.email = email;
+		this.password = password;
+	}
 	@Override
 	public String toString() {
 		return "BodmasStudent [name=" + name + ", email=" + email + ", mobile=" + mobile + ", password=" + password

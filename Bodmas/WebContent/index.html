@@ -58,7 +58,8 @@
 				<!-- Tab panes -->
 				<div class="tab-content">
 					<div class="tab-pane active" id="Login">
-						<form role="form" class="form-horizontal">
+						<form role="form" class="form-horizontal" action="BodmasControllerServlet" method="post">
+						<input type="hidden" name="command" value="S_LOGIN" /> 
 							<div class="form-group">
 								<div class="col-sm-12">
 									<input class="form-control" id="email1" placeholder="Email" type="email" name="email" required>
@@ -218,9 +219,9 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Course </a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="#">Course Grid 2 </a>
-								<a class="dropdown-item" href="#">Course Grid 3 </a>
-								<a class="dropdown-item" href="#">Course Grid 4 </a>
+								<a class="dropdown-item" href="#" onclick="alert('Please Login First');">Audio </a>
+								<a class="dropdown-item" href="#" onclick="alert('Please Login First');">Document </a>
+								<a class="dropdown-item" href="#" onclick="alert('Please Login First');">Video </a>
 							</div>
 						</li>
 						<li class="nav-item dropdown">

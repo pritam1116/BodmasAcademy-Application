@@ -196,9 +196,9 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Course </a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="#">Course Grid 2 </a>
-								<a class="dropdown-item" href="#">Course Grid 3 </a>
-								<a class="dropdown-item" href="#">Course Grid 4 </a>
+								<a class="dropdown-item" href="#">Audio </a>
+								<a class="dropdown-item" href="#">Document </a>
+								<a class="dropdown-item" href="#">Video </a>
 							</div>
 						</li>
 						<li class="nav-item dropdown">
