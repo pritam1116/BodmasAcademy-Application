@@ -77,7 +77,7 @@ public class BodmasControllerServlet extends HttpServlet {
 				fetchingData(request,response);
 				break;
 			
-			case "ADD":
+			case "S_ADD":
 				addStudent(request,response);
 				break;
 			
@@ -191,7 +191,7 @@ public class BodmasControllerServlet extends HttpServlet {
 		System.out.println(bs);
 
 		bodmasDbUtil.addStudent(bs);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("index.html");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("registration_confirmation.jsp");   
 		dispatcher.forward(request, response);
 		
 		

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<head>
     <!-- Basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">   
@@ -81,8 +81,8 @@
 						</form>
 					</div>
 					<div class="tab-pane" id="Registration">
-						<form role="form" class="form-horizontal" action="registration_confirmation.jsp" method="post">
-						
+						<form role="form" class="form-horizontal" action="BodmasControllerServlet" method="post">
+							<input type="hidden" name="command" value="S_ADD" /> 
 							<div class="form-group">
 								<div class="col-sm-12">
 									<input class="form-control" id="name" placeholder="Name" type="text" name="name" required>
@@ -110,9 +110,9 @@
 							</div>
 							<div class="row">							
 								<div class="col-sm-10" class="open-btn">
-									<button type="submit" class="btn btn-light btn-radius btn-brd grd1"  onclick="return openForm()">
-										Save &amp; Continue
-									</button>
+									 <button type="submit" class="btn btn-light btn-radius btn-brd grd1"  onclick="return openForm()">
+										Save &amp; Continue</button>
+									
 									<button type="reset" class="btn btn-light btn-radius btn-brd grd1">
 										Reset</button>
 									<button type="button" class="btn btn-light btn-radius btn-brd grd1" onclick="window.history.back()">
@@ -219,7 +219,7 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Course </a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="#" onclick="alert('Please Login First');">Audio </a>
+								<a class="dropdown-item"  href="#" onclick="alert('Please Login First');">Audio </a>
 								<a class="dropdown-item" href="#" onclick="alert('Please Login First');">Document </a>
 								<a class="dropdown-item" href="video.html">Video </a>
 							</div>

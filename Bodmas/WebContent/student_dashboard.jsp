@@ -64,7 +64,7 @@
 
 	<!-- Modal -->
 	<div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+	  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
 		<div class="modal-content">
 			<div class="modal-header tit-up">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
