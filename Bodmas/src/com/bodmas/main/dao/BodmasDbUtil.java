@@ -3,16 +3,20 @@
  */
 package com.bodmas.main.dao;
 
-import java.beans.Statement;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.DataSource;
 
+
 import com.bodmas.main.model.BodmasAdmin;
 import com.bodmas.main.model.BodmasStudent;
+
 
 /**
  * @author Pritam Sinha
@@ -162,6 +166,183 @@ public class BodmasDbUtil {
 			close(conn, ps, rs);
 				
 		}
+	}
+
+	public List<BodmasStudent> getStudents() throws Exception {
+		
+		List<BodmasStudent> students = new ArrayList<BodmasStudent>();
+		
+
+		
+		try {
+		//get a connection
+		conn = dataSource.getConnection();
+		
+		//create SQL statement
+		String sql = "select * from bodmas_registration ";
+		stmt = conn.createStatement();
+		
+		//execute query
+		rs = stmt.executeQuery(sql);
+		
+		//process result set
+		while(rs.next()) {
+			
+			//retrieve data from result set row 
+			int id = rs.getInt("id");
+			String name = rs.getString("name");
+			String email = rs.getString("email");
+			String mobile = rs.getString("mobile");
+			String password = rs.getString("password");
+			String confirm_password = rs.getString("confirm_password");
+			//create new student object
+			BodmasStudent tempStudent = new BodmasStudent(id, name, email, mobile,password,confirm_password);
+			
+			//add it to the list of students
+			students.add(tempStudent);
+					
+
+		}
+		
+			return students;	
+		}
+		finally {
+			
+			//close JDBC objects
+			close(conn,stmt,rs);
+		}
+	}
+
+	private void close(Connection conn2, Statement stmt2, ResultSet rs2) {
+		
+try {
+			
+			if(rs != null) {
+				rs.close();
+			}
+			if(stmt != null) {
+				stmt.close();
+			}
+			if(conn != null) {
+				conn.close();
+			}
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void deleteStudent(String theStudentId) throws Exception {
+		
+		try {
+			
+			//convert student id to int 
+			int studentId = Integer.parseInt(theStudentId);
+			
+			//get connection to database 
+			conn = dataSource.getConnection();
+			
+			//create statement to delete student
+			String sql = "delete from bodmas_registration where id=? ";
+			
+			//prepared statement
+			ps=conn.prepareStatement(sql);
+			
+			//set params
+			ps.setInt(1, studentId);
+			
+			//execute SQL statement 
+			ps.execute();
+		}
+		finally {
+			close(conn, ps, rs);
+		}
+		
+	}
+
+	public BodmasStudent getStudents(String theStudentId) throws Exception {
+		
+        int studentId;
+		BodmasStudent theStudent = null;
+		try {
+			//convert student id to int 
+			studentId = Integer.parseInt(theStudentId);
+			
+			//get connection to database
+			conn = dataSource.getConnection();
+			
+			//create sql to get selected student 
+			String sql = "select * from bodmas_registration where id=? ";
+			
+			//create prepared statement 
+			ps = conn.prepareStatement(sql);
+			
+			//set the param
+			ps.setInt(1,studentId);
+			
+			//execute statement 
+			rs = ps.executeQuery();
+			
+			//retrieve data from result set row
+			if(rs.next()) {
+				
+				String name = rs.getString("name");
+				String email = rs.getString("email");
+				String mobile = rs.getString("mobile");
+				String password = rs.getString("password");
+				String confirm_password= rs.getString("confirm_password");
+				
+				//use the studentId during construction
+				theStudent = new BodmasStudent(studentId, name, email,mobile,password,confirm_password);
+			}
+			
+			else {
+				throw new Exception("Could not find student id: " + studentId);
+			}
+		
+		return theStudent;
+		}
+		finally {
+			//clean up JDBC object
+			close(conn, ps, rs);
+		}
+	}
+
+	public void updateStudent(BodmasStudent theStudent) throws Exception {
+		
+		try {
+			
+			//get DB connection
+			conn=dataSource.getConnection();
+			
+			//create SQL for update
+			String sql = "update bodmas_registration "
+						+" set name=?, email=?, mobile=?, password=?, confirm_password=? "
+						+ " where id=? ";
+			
+			ps = conn.prepareStatement(sql);
+			
+			//set the param values for the student 
+			ps.setString(1, theStudent.getName());
+			ps.setString(2, theStudent.getEmail());
+			ps.setString(3, theStudent.getMobile());
+			ps.setString(4,theStudent.getPassword());
+			ps.setString(5,theStudent.getConfirm_password());
+			ps.setInt(6,theStudent.getId());
+			
+			//execute SQL  statements
+			ps.execute();
+			
+		} 	 	
+		finally {
+		//clean up JDBC objects
+		close(conn, ps, rs);
+			
+		}
+		
 	}
 
 }

@@ -6,6 +6,7 @@ package com.bodmas.main.model;
  */
 public class BodmasStudent {
 	
+	private int id;
 	private String name;
 	private String email;
 	private String mobile;
@@ -15,6 +16,12 @@ public class BodmasStudent {
 	
 	
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -49,19 +56,28 @@ public class BodmasStudent {
 	
 	
 	//constructor
-	public BodmasStudent(String name, String email, String mobile, String password, String confirm_password) {
+	public BodmasStudent(int id,String name, String email, String mobile, String password, String confirm_password) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.mobile = mobile;
 		this.password = password;
 		this.confirm_password = confirm_password;
+		this.id=id;
 	}
 	
 	
 	public BodmasStudent(String email, String password) {
 		this.email = email;
 		this.password = password;
+	}
+	public BodmasStudent(String name, String email, String mobile, String password, String confirm_password) {
+		
+		this.name = name;
+		this.email = email;
+		this.mobile = mobile;
+		this.password = password;
+		this.confirm_password = confirm_password;
 	}
 	@Override
 	public String toString() {

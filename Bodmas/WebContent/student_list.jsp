@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -106,7 +107,77 @@
 	
 	
 	
+	<!--  Student Registration  -->
 	
+	
+		<div class="modal fade" id="admin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header tit-up">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Student Registration</h4>
+			</div>
+		<div class="modal-body customer-box">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs">
+					<li><a class="active" href="#Admin" data-toggle="tab">Registration</a></li>
+					
+				</ul>
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div class="tab-pane active" id="Admin">
+						<form role="form" class="form-horizontal" action="BodmasControllerServlet" method="post">
+							<input type="hidden" name="command" value="S_ADD" /> 
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" id="name" placeholder="Name" type="text" name="name" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" id="email" placeholder="Email" type="email" name="email" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" id="mobile" placeholder="Mobile" type="text" name="mobile" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" id="password" placeholder="Password" type="password" name="password" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input class="form-control" id="confirm_password" placeholder="Confirm Password" type="password" name="confirm_password" required>
+								</div>
+							</div>
+							<div class="row">							
+								<div class="col-sm-10" class="open-btn">
+									 <button type="submit" class="btn btn-light btn-radius btn-brd grd1"  onclick="return openForm()">
+										Save &amp; Continue</button>
+									
+									<button type="reset" class="btn btn-light btn-radius btn-brd grd1">
+										Reset</button>
+									<button type="button" class="btn btn-light btn-radius btn-brd grd1" onclick="window.history.back()">
+										Cancel</button>
+								</div>
+							</div>
+							
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+							
+						
+	</div>
+</div>
+			
+		
+	<!-- end admin panel -->
 	
 
 	
@@ -158,7 +229,7 @@
 							</div>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="teachers.html">Teachers</a></li>
-						<li class="nav-item"><a class="nav-link" href="BodmasControllerServlet">Student_List</a></li>    
+						<li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#admin">Student_List</a></li>    
 						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
@@ -175,90 +246,103 @@
 	
 		
 <br/><br/>		
- 
+
+
+
+
+
+
+			
+
+
+
+<div class="container">
+	
+		<!--  put new button: Add Student -->
 		
-<!-- Upload Audio -->		
-<div class="container">
-<h1>Add Audio</h1>
-<form class="was-validated" action="BodmasControllerServlet" method="post" enctype="multipart/form-data">
-<input type="hidden" name="command" value="AUDIO" />
-
-  <div class="mb-3">
-    <label for="validationTextarea">Description of Audio</label>
-    <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required textarea" required></textarea>
-    <div class="invalid-feedback">
-      Please enter a description in the text area.
-    </div>
-  </div>
-  
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
-    <div class="invalid-feedback">Please choose the file</div>
-  </div><br/><br/>
-  <button class="btn btn-primary" type="submit">Upload</button>
-  
-</form>
-	
-</div>	<br/><br/>
-
-
-
-	
- 
+		<input type="button" value="Add Student" data-toggle="modal" data-target="#admin"
+			  class="btn btn-primary" /> 
+		  
 		
-<!-- Upload Document -->		
-<div class="container">
-<h1>Add Document</h1>
-<form class="was-validated" action="BodmasControllerServlet" method="post" enctype="multipart/form-data">
-<input type="hidden" name="command" value="Document" />
 
-  <div class="mb-3">
-    <label for="validationTextarea">Description of Document</label>
-    <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required textarea" required></textarea>
-    <div class="invalid-feedback">
-      Please enter a description in the text area.
-    </div>
-  </div>
+		<br/><br/>
+		<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Password</th>
+      <th scope="col">Action</th>
+      <th scope="col">Type</th>
+      
+      
+    </tr>
+  </thead>
   
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
-    <div class="invalid-feedback">Please choose the file</div>
-  </div><br/><br/>
-  <button class="btn btn-primary" type="submit">Upload</button>
   
-</form>
+  
+  
+  
+  <c:forEach var="tempStudent" items="${STUDENT_LIST}">
+				
+				<!--  set up a link for each student -->
+				<c:url var="tempLink" value="BodmasControllerServlet"> 
+					<c:param name="command" value="LOAD" />
+					<c:param name="studentId" value="${tempStudent.id}" />
+				</c:url>
+				
+				<!--  set up a link to delete a student  -->
+				<c:url var="deleteLink" value="BodmasControllerServlet"> 
+					<c:param name="command" value="DELETE" />
+					<c:param name="studentId" value="${tempStudent.id}" />
+				</c:url>
+				<tbody>
+				<tr>
+					<th scope="row"> ${tempStudent.id} </th> 
+					<td> ${tempStudent.name} </td>
+					<td> ${tempStudent.email} </td>
+					<td> ${tempStudent.mobile} </td>   
+					<td> ${tempStudent.password} </td> 
+					<td>
+						 <a style="color:blue" href="${tempLink}">Update</a> 
+						 |
+						 <a style="color:blue"  href="${deleteLink}"
+						 	onclick="if(!(confirm('Are you sure you want to delete this student?'))) return false">
+						 	Delete</a>
+						 
+					</td>
+				</tr>
+				</tbody>
+			</c:forEach>
+  
+  
+  
+  
+  
+  
+  
+  </table>
+		
+</div>
+			
+			
+			
+			
 	
-</div>	<br/><br/>
+			
+		 
 
 
-<!-- Upload Video -->		
-<div class="container">
-<h1>Add Video</h1>
-<form class="was-validated" action="BodmasControllerServlet" method="post" enctype="multipart/form-data">
-<input type="hidden" name="command" value="Document" />
- 
 
- 
-  <div class="mb-3">
-    <label for="validationTextarea">Description of Video</label>
-    <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required textarea" required></textarea>
-    <div class="invalid-feedback">
-      Please enter a description in the text area.
-    </div>
-  </div>
-  
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
-    <div class="invalid-feedback">Please choose the file</div>
-  </div><br/><br/>
-  <button class="btn btn-primary" type="submit">Upload</button>
-  
-</form>
-	
-</div>	<br/><br/>
+
+		
+
+
+
+
+<br/><br/>
 	
 	
 
